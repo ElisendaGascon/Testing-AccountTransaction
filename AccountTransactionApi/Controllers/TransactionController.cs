@@ -53,6 +53,12 @@ namespace AccountTransactionApi.Controllers
 
                 return Ok(id);
             }
+            catch (ArgumentException ae)
+            {
+                await _accountTransactionService
+                    .Log(ae.ToString(), DataAccess.Enums.LogLevels.Error);
+                return Content(HttpStatusCode.NotFound, ae.Message);
+            }
             catch (HttpResponseException hre)
             {
                 await _accountTransactionService
