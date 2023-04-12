@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Logs]
+(
+	[Id] INT  IDENTITY (1, 1) NOT NULL, 
+    [Message] NVARCHAR(MAX) NOT NULL, 
+	[Level] VARCHAR(10) NOT NULL,
+    [LastUpdated] DATETIME NOT NULL CONSTRAINT [DF_Logs_LastUpdated] DEFAULT getutcdate(),
+	CONSTRAINT [PK_Logs] PRIMARY KEY CLUSTERED ([Id] ASC)
+)
